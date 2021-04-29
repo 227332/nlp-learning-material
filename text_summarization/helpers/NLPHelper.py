@@ -15,7 +15,7 @@ class NLPHelper:
         self._stopwords = set(stopwords.words(language))
         if stemming:
             self._stemmer = SnowballStemmer(language)
-        else: 
+        else:
             self._stemmer = None
 
     @property
@@ -28,9 +28,9 @@ class NLPHelper:
 
     @property
     def stemmer(self) -> Any:
-        return self._stemmer    
+        return self._stemmer
 
-    def preprocess_text(self, text: str) -> str: 
+    def preprocess_text(self, text: str) -> str:
         """Pre-process input text with conversion to lowercase, punctuation removal,
         stopwords removal and stemming
         """
@@ -56,7 +56,7 @@ class NLPHelper:
     @staticmethod
     def remove_punctuation(text: str) -> str:
         """Remove punctuation from input text"""
-        text_with_whitespace_replaced_by_space = re.sub("\s+", " ", text).strip()
+        text_with_whitespace_replaced_by_space = re.sub(r"\s+", " ", text).strip()
         punctuation_characters = string.punctuation + '’'  # ’ not ascii character
         regex_pattern = "[{}]+".format(re.escape(punctuation_characters))
         text_without_punctuation = re.sub(regex_pattern, '', text_with_whitespace_replaced_by_space)

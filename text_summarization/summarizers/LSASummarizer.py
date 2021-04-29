@@ -10,8 +10,8 @@ from summarizers.BaseSummarizer import BaseSummarizer
 
 class LSASummarizer(BaseSummarizer):
     """Apply automatic text summarization using Latent Semantic Analysis (LSA),
-    as described in the paper 'Using Latent Semantic Analysis in Text Summarization 
-    and Summary Evaluation' (Steinberger et al., 2004): 
+    as described in the paper 'Using Latent Semantic Analysis in Text Summarization
+    and Summary Evaluation' (Steinberger et al., 2004):
     http://www.kiv.zcu.cz/~jstein/publikace/isim2004.pdf
     """
 
@@ -23,17 +23,17 @@ class LSASummarizer(BaseSummarizer):
         """Summarize input text with a desired number of sentences"""
         sentences = self._nlp_helper.get_sentences(text)
         text_length = len(sentences)
-        if summary_length >= text_length or text_length==0:
+        if summary_length >= text_length or text_length == 0:
             return sentences
         if summary_length <= 0:
             return []
         preprocessed_sentences = [self._nlp_helper.preprocess_text(sentence) for sentence in sentences]
         term_sentence_matrix = self._compute_term_sentence_matrix(preprocessed_sentences)
-        term_topic_matrix, sigma_vector, topic_sentence_matrix = singular_value_decomposition(term_sentence_matrix, full_matrices=False)
+        term_topic_matrix, sigma_vector, topic_sentence_matrix = svd(term_sentence_matrix, full_matrices=False)
         sentence_scores = self._compute_squared_salience_scores(sigma_vector, topic_sentence_matrix)
         # sort sentence indices from higher to lower score and select the top indices
         ranked_sentence_indices = np.argsort(-sentence_scores)
-        top_sentence_indices = ranked_sentence_indices[: summary_length]
+        top_sentence_indices = ranked_sentence_indices[:summary_length]
         # sort the sentences in the order they appear in the original text
         top_sentence_indices.sort()
         return [sentences[index] for index in top_sentence_indices]
