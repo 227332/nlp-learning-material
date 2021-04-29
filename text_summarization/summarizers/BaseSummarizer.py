@@ -4,7 +4,7 @@ from typing import List
 
 class BaseSummarizer(ABC):
 
-    def __init__(self, language: str) -> None:
+    def __init__(self, language: str = "english") -> None:
         self._language = language
 
     @property

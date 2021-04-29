@@ -39,14 +39,14 @@ class LSASummarizer(BaseSummarizer):
         return [sentences[index] for index in top_sentence_indices]
 
     @staticmethod
-    def _compute_term_sentence_matrix(self, sentences: List[str]) -> Any:
+    def _compute_term_sentence_matrix(sentences: List[str]) -> Any:
         """Compute the weighted term-sentence matrix"""
         vectorizer = TfidfVectorizer(ngram_range=(1, 1), stop_words=None)
         matrix = vectorizer.fit_transform(sentences)
         return matrix
 
     @staticmethod
-    def _compute_squared_salience_scores(self, sigma_vector: Any, topic_sentence_matrix: Any) -> Any:
+    def _compute_squared_salience_scores(sigma_vector: Any, topic_sentence_matrix: Any) -> Any:
         """Compute the squared value of the salience score of each sentence.
         The salience score is also called sentence length in the literature
         """
