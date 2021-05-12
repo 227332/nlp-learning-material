@@ -2,6 +2,10 @@
 
 This repository contains a collection of several automatic text summarization techniques.
 
+An overview of well-known text summarization techniques is presented in the jupyter notebook [text_summarization_techniques_overview.ipynb](text_summarization_techniques_overview.ipynb).
+
+Some techniques have been implemented from scratch. Their implementation can be found inside the summarizers/ folder and their code can be run by using the [main.py](main.py) script.
+
 ## Install
 
 Create a new environment.
