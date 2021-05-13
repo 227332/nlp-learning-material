@@ -1,0 +1,9 @@
+name: summarizer_dev
+channels:
+  - defaults
+dependencies:
+  - ipykernel=5.3.4
+  - pip=21.0.1
+  - python==3.9.4
+  - pip:
+    - -r file:requirements.txt

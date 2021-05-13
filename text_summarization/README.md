@@ -12,7 +12,7 @@ Create a new environment.
 
 Install the necessary packages in the environment:
 ```
-pip install requirements.txt
+conda env create -f environment.yml
 ```
 
 Download required nltk data for stopwords removal and sentence tokenizer:
