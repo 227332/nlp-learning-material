@@ -8,9 +8,7 @@ Some techniques have been implemented from scratch. Their implementation can be 
 
 ## Install
 
-Create a new environment.
-
-Install the necessary packages in the environment:
+Create a new environment with the necessary packages:
 ```
 conda env create -f environment.yml
 ```
